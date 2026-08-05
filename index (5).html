@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CDindustriez — Business Revamp &amp; Brand Fabrication</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#181A19;
+    --surface:#1F2220;
+    --surface-2:#262925;
+    --eggshell:#F1ECE1;
+    --eggshell-soft:#C7C2B4;
+    --muted:#82857D;
+    --green:#3C6E52;
+    --green-bright:#5C9975;
+    --green-soft:#22322A;
+    --line:#2E3130;
+    --radius:12px;
+    --display:'Fraunces', serif;
+    --body:'Inter', sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 900px 500px at 12% -10%, rgba(92,153,117,0.08), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 100% 20%, rgba(241,236,225,0.04), transparent 55%),
+      var(--bg);
+    color:var(--eggshell);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  :focus-visible{outline:2px solid var(--green-bright);outline-offset:3px;}
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--green-bright);
+  }
+
+  h1,h2,h3{
+    font-family:var(--display);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    color:var(--eggshell);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(24,26,25,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:80px;
+  }
+  .logo{
+    font-family:var(--display);
+    font-weight:600;
+    font-size:19px;
+    letter-spacing:.01em;
+  }
+  .logo span{color:var(--green-bright);}
+  .nav-links{display:flex;gap:38px;font-size:14px;}
+  .nav-links a{color:var(--eggshell-soft);transition:color .15s ease;}
+  .nav-links a:hover{color:var(--eggshell);}
+  .nav-cta{
+    border:1px solid var(--green);
+    color:var(--eggshell);
+    padding:10px 20px;
+    border-radius:100px;
+    font-size:13.5px;
+    font-weight:500;
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .nav-cta:hover{background:var(--green-soft);border-color:var(--green-bright);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:100px 0 80px;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:64px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px,4.6vw,58px);
+    line-height:1.08;
+    margin:20px 0 24px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--green-bright);
+  }
+  .hero p.lede{
+    font-size:17px;
+    color:var(--eggshell-soft);
+    max-width:440px;
+    margin-bottom:34px;
+  }
+  .hero-actions{display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--green);
+    color:var(--eggshell);
+    padding:15px 28px;
+    border-radius:100px;
+    font-weight:500;
+    font-size:15px;
+    transition:background .15s ease, transform .15s ease;
+  }
+  .btn-primary:hover{background:var(--green-bright);transform:translateY(-2px);}
+  .btn-secondary{
+    color:var(--eggshell);
+    font-weight:500;
+    font-size:15px;
+    padding:15px 4px;
+    border-bottom:1px solid var(--eggshell-soft);
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .btn-secondary:hover{border-color:var(--eggshell);}
+
+  /* marble slab — simple signature visual */
+  .slab{
+    position:relative;
+    aspect-ratio:.92/1;
+    border-radius:var(--radius);
+    background:
+      linear-gradient(155deg, rgba(241,236,225,0.05) 0%, transparent 30%),
+      linear-gradient(20deg, transparent 40%, rgba(92,153,117,0.10) 41%, transparent 43%),
+      linear-gradient(200deg, transparent 60%, rgba(241,236,225,0.06) 61%, transparent 64%),
+      var(--surface);
+    border:1px solid var(--line);
+    overflow:hidden;
+  }
+  .slab::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(100deg, transparent 46%, rgba(92,153,117,0.55) 49%, rgba(92,153,117,0.15) 51%, transparent 55%);
+    mix-blend-mode:screen;
+    opacity:.55;
+  }
+  .slab-label{
+    position:absolute;
+    bottom:24px;left:24px;right:24px;
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.05em;
+    color:var(--eggshell-soft);
+    display:flex;
+    justify-content:space-between;
+  }
+  .slab-label b{color:var(--green-bright);font-weight:500;}
+
+  /* ---------- STAT STRIP ---------- */
+  .stat-strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .stat-row{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+  .stat{
+    padding:28px 0;
+    text-align:center;
+    border-left:1px solid var(--line);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{
+    font-family:var(--display);
+    font-size:28px;
+    color:var(--green-bright);
+  }
+  .stat .label{
+    font-family:var(--mono);
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    margin-top:6px;
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:104px 0;}
+  .section-head{max-width:580px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,36px);margin-top:14px;}
+  .section-head p{color:var(--eggshell-soft);margin-top:14px;font-size:15.5px;max-width:500px;}
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .service{
+    padding:34px 0;
+    border-top:1px solid var(--line);
+  }
+  .service .idx{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--green-bright);
+    margin-bottom:16px;
+    display:block;
+  }
+  .service h3{font-size:19px;margin-bottom:10px;font-weight:500;}
+  .service p{font-size:14.5px;color:var(--eggshell-soft);}
+
+  /* ---------- PACKAGES ---------- */
+  .pkg-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    align-items:stretch;
+  }
+  .pkg{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:34px 30px;
+    display:flex;
+    flex-direction:column;
+  }
+  .pkg.featured{
+    border-color:var(--green);
+    background:linear-gradient(180deg, var(--green-soft), var(--surface) 45%);
+  }
+  .pkg-badge{
+    font-family:var(--mono);
+    font-size:10.5px;
+    color:var(--green-bright);
+    letter-spacing:.05em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+  }
+  .pkg-tier{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--muted);
+    letter-spacing:.05em;
+    margin-bottom:10px;
+  }
+  .pkg h3{font-size:21px;margin-bottom:8px;font-weight:500;}
+  .pkg .pkg-desc{font-size:13.75px;color:var(--eggshell-soft);margin-bottom:22px;}
+  .pkg .price{
+    font-family:var(--display);
+    font-size:38px;
+    font-weight:500;
+    color:var(--eggshell);
+    margin-bottom:2px;
+  }
+  .pkg .price small{font-size:13px;color:var(--muted);font-family:var(--body);font-weight:400;}
+  .pkg-list{list-style:none;margin:24px 0 28px;flex-grow:1;}
+  .pkg-list li{
+    font-size:13.75px;
+    color:var(--eggshell-soft);
+    padding:10px 0;
+    border-top:1px solid var(--line);
+    display:flex;
+    gap:10px;
+  }
+  .pkg-list li:first-child{border-top:none;}
+  .pkg-list li::before{content:"—";color:var(--green-bright);flex-shrink:0;}
+  .pkg-cta{
+    text-align:center;
+    padding:14px;
+    border-radius:100px;
+    font-size:14px;
+    font-weight:500;
+    border:1px solid var(--eggshell-soft);
+    transition:background .15s ease, border-color .15s ease;
+  }
+  .pkg-cta:hover{background:var(--surface-2);border-color:var(--eggshell);}
+  .pkg.featured .pkg-cta{
+    background:var(--green);
+    border-color:var(--green);
+  }
+  .pkg.featured .pkg-cta:hover{background:var(--green-bright);border-color:var(--green-bright);}
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:32px;
+  }
+  .step{border-top:1px solid var(--line);padding-top:20px;}
+  .step .num{
+    font-family:var(--mono);
+    font-size:12.5px;
+    color:var(--green-bright);
+  }
+  .step h3{font-size:16.5px;margin:14px 0 8px;font-weight:500;}
+  .step p{font-size:13.75px;color:var(--eggshell-soft);}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .testi{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+  }
+  .testi p.quote{
+    font-family:var(--display);
+    font-size:18px;
+    line-height:1.5;
+    margin-bottom:22px;
+    color:var(--eggshell);
+  }
+  .testi .who{display:flex;align-items:center;gap:12px;}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--green-soft);border:1px solid var(--line);}
+  .who small{display:block;color:var(--muted);font-size:12px;margin-top:2px;}
+  .who strong{font-size:14px;font-weight:500;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    text-align:center;
+    padding:64px 40px;
+    border:1px solid var(--line);
+    border-radius:24px;
+    background:var(--surface);
+    margin:0 32px;
+  }
+  .contact h2{
+    font-size:clamp(28px,4vw,42px);
+    margin:18px 0 28px;
+    max-width:600px;
+    margin-left:auto;margin-right:auto;
+  }
+  .contact-email{
+    font-family:var(--mono);
+    font-size:clamp(16px,2.1vw,20px);
+    color:var(--green-bright);
+    display:inline-block;
+    border-bottom:1px solid rgba(92,153,117,0.4);
+    padding-bottom:4px;
+    margin-bottom:36px;
+  }
+  .contact-socials{display:flex;justify-content:center;gap:26px;font-size:13px;color:var(--muted);}
+  .contact-socials a:hover{color:var(--eggshell);}
+
+  footer{
+    padding:44px 32px 52px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:12.5px;color:var(--muted);
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .hero-grid{grid-template-columns:1fr;}
+    .slab{aspect-ratio:16/10;order:-1;}
+    .stat-row{grid-template-columns:1fr 1fr;}
+    .stat:nth-child(3){border-left:none;}
+    .services-grid{grid-template-columns:1fr;}
+    .pkg-grid{grid-template-columns:1fr;}
+    .process{grid-template-columns:1fr 1fr;}
+    .testi-grid{grid-template-columns:1fr;}
+    .contact{padding:48px 26px;}
+    footer{flex-direction:column;gap:10px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">CD<span>industriez</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#packages">Packages</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Start a revamp</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Business revamp &amp; brand fabrication</p>
+        <h1>A <em>fresh start</em>, built to last.</h1>
+        <p class="lede">CDindustriez specializes in revamping businesses that have outgrown their look — new logo, new content, new merch, built as one connected identity instead of scattered pieces.</p>
+        <div class="hero-actions">
+          <a href="#packages" class="btn-primary">See packages</a>
+          <a href="#contact" class="btn-secondary">Book a call</a>
+        </div>
+      </div>
+
+      <div class="slab" aria-hidden="true">
+        <div class="slab-label"><span>IDENTITY REBUILD</span><span><b>NEW</b></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="wrap stat-row">
+      <div class="stat"><div class="num">60+</div><div class="label">Brands rebuilt</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Package tiers</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">Custom marks</div></div>
+      <div class="stat"><div class="num">94%</div><div class="label">Client retention</div></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">What we build</p>
+        <h2>Everything a revamp actually needs.</h2>
+        <p>Logo, content, and merchandise — designed together so nothing feels bolted on afterward.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service">
+          <span class="idx">01</span>
+          <h3>Logo design</h3>
+          <p>Custom logo marks in small, medium, or large licensing — scaled to how big your business needs to show up.</p>
+        </div>
+        <div class="service">
+          <span class="idx">02</span>
+          <h3>Social media posts</h3>
+          <p>On-brand post templates and story graphics so your new identity actually shows up in the feed, not just on paper.</p>
+        </div>
+        <div class="service">
+          <span class="idx">03</span>
+          <h3>Merchandise creation</h3>
+          <p>Apparel, stickers, packaging, and signage — the physical pieces that make a rebrand feel real off-screen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section id="packages">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Packages</p>
+        <h2>Three tiers, one clear scope each.</h2>
+        <p>Pick the scale that matches your business. Every tier includes a logo and social content — the higher tiers add more coverage, not a different process.</p>
+      </div>
+      <div class="pkg-grid">
+
+        <div class="pkg">
+          <p class="pkg-tier">SMALL</p>
+          <h3>Starter Retool</h3>
+          <p class="pkg-desc">For a business that just needs the logo and basics fixed.</p>
+          <p class="price">$450<small> / one-time</small></p>
+          <ul class="pkg-list">
+            <li>1 logo concept, small-business license (digital + business card/letterhead)</li>
+            <li>5 social media post templates</li>
+            <li>Mini brand guide — colors &amp; fonts</li>
+            <li>1 round of revisions</li>
+            <li>No merchandise included</li>
+          </ul>
+          <a href="#contact" class="pkg-cta">Start small</a>
+        </div>
+
+        <div class="pkg featured">
+          <p class="pkg-badge">Most popular</p>
+          <p class="pkg-tier">MEDIUM</p>
+          <h3>Full Rebuild</h3>
+          <p class="pkg-desc">The complete identity system most growing businesses need.</p>
+          <p class="price">$1,000<small> / one-time</small></p>
+          <ul class="pkg-list">
+            <li>3 logo concepts, medium license (digital, print &amp; signage-ready)</li>
+            <li>15 social post templates + 5 story templates</li>
+            <li>Full style guide — colors, type &amp; usage rules</li>
+            <li>Starter merch pack: stickers + business cards</li>
+            <li>2 rounds of revisions</li>
+          </ul>
+          <a href="#contact" class="pkg-cta">Build the full rebrand</a>
+        </div>
+
+        <div class="pkg">
+          <p class="pkg-tier">LARGE</p>
+          <h3>Complete Overhaul</h3>
+          <p class="pkg-desc">A ground-up relaunch across every touchpoint, including merch.</p>
+          <p class="price">$2,000<small> / one-time</small></p>
+          <ul class="pkg-list">
+            <li>Unlimited logo concepts, large license (all formats + animated logo option)</li>
+            <li>30+ social post templates &amp; a content calendar</li>
+            <li>Full brand guidelines book</li>
+            <li>Full merch line: apparel, packaging, signage &amp; cards</li>
+            <li>Unlimited revisions through launch</li>
+          </ul>
+          <a href="#contact" class="pkg-cta">Go all in</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How it works</p>
+        <h2>Four stages, start to launch.</h2>
+      </div>
+      <div class="process">
+        <div class="step">
+          <span class="num">01</span>
+          <h3>Teardown</h3>
+          <p>We audit what's not working about the current brand and why it's holding the business back.</p>
+        </div>
+        <div class="step">
+          <span class="num">02</span>
+          <h3>Retool</h3>
+          <p>Logo concepts and content direction, scoped to your package tier.</p>
+        </div>
+        <div class="step">
+          <span class="num">03</span>
+          <h3>Rebuild</h3>
+          <p>Full identity system built out — files, guidelines, and content ready to use.</p>
+        </div>
+        <div class="step">
+          <span class="num">04</span>
+          <h3>Rollout</h3>
+          <p>Launch across social, print, and merch so the new brand shows up everywhere at once.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Kind words</p>
+        <h2>What clients say post-rollout.</h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi">
+          <p class="quote">"We went in for a logo and came out with an entire brand system — merch included. It finally feels like one business."</p>
+          <div class="who">
+            <div class="avatar"></div>
+            <div><strong>Renee Ortiz</strong><small>Owner, Ortiz Hardware Co.</small></div>
+          </div>
+        </div>
+        <div class="testi">
+          <p class="quote">"The tier system made it easy to know exactly what we were paying for. No guessing, no scope creep."</p>
+          <div class="who">
+            <div class="avatar"></div>
+            <div><strong>Devon Marsh</strong><small>Founder, Marsh &amp; Co. Studio</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact">
+        <p class="eyebrow">Get in touch</p>
+        <h2>Ready for a fresh start?</h2>
+        <a href="mailto:hello@cdindustriez.com" class="contact-email">hello@cdindustriez.com</a>
+        <div class="contact-socials">
+          <a href="#">Instagram</a>
+          <a href="#">Dribbble</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span>© 2026 CDindustriez. Built to rebuild.</span>
+  <span>Business revamp &amp; brand fabrication.</span>
+</footer>
+
+</body>
+</html>
